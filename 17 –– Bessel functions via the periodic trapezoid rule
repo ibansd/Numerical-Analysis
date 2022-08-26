@@ -1,0 +1,16 @@
+function js = myBessel(nu,n,xs)
+
+Jnux = @(k, x) cos(nu*(2*pi*(k - 1)/n) - x*sin(2*pi*(k - 1)/n));
+
+for k = 1:length(xs)
+    myj = 0;
+    for kk = 1:n
+        myj = myj + Jnux(kk, xs(k));
+    end
+    js(k) = (1/n)*myj;
+end
+
+
+
+end
+% IBAN SADOWSKI
