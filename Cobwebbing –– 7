@@ -1,0 +1,21 @@
+% Iban Sadowski
+
+function [x] = cobweb(phi,Niter,x0)  
+    x = [x0]
+    for i = 1:Niter
+        x1 = phi(x0)
+        x(end + 1) = x1
+        line([x0, x0],[x0, phi(x0)])
+        line([x0, phi(x0)],[phi(x0), phi(x0)])
+        x0 = x1
+        
+    end
+        
+    y = @(x) x
+    hold on
+    fplot(phi)
+    fplot(y)
+    title('Cobwebbing')
+    xlabel('x')
+    ylabel('\phi(x)')  
+end
