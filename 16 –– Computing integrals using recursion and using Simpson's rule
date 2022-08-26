@@ -1,0 +1,38 @@
+% IBAN SADOWSKI
+% first method: using the recursive formula
+
+ints = zeros(1,20); % where to store the integrals in the recursive method
+ints(1) = 1/exp(1);
+
+for k=2:20
+    ints(k) = 1 - k*ints(k - 1);
+end
+
+bad_int = ints(20);
+
+% second method: using Simpson's rule
+
+f = @(x) (x^20)*exp(x - 1);
+n = 100; % number of points (I am overestimating to make sure we are within 3 digits)
+h = 1/n; % size of each subinterval
+
+xs = linspace(0,1,n+1); % nodes for the composite rule
+
+intSim = 0; % initialize the Simpson integral
+
+%% input code here: use a simple Simpson rule on each subinterval [xs(k),xs(k+1)]
+for k = 1:n 
+    xbar = (xs(k + 1) + xs(k))/2;
+    xi = xs(k); xi1 = xs(k + 1);
+    Ic = f(xi) + 4*f(xbar) + f(xi1);
+    intSim = Ic + intSim;
+end
+intSim = (h/6)*intSim;
+% display results
+disp('I20 using recursive formula:')
+bad_int 
+
+disp('I20 using composite Simpson rule:')
+intSim
+
+
