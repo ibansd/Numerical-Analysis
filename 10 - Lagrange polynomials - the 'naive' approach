@@ -1,0 +1,33 @@
+% IBAN SADOWSKI
+
+
+% test 2 
+nnodes = 15; 
+nodes = linspace(-1,1,nnodes)
+testvals = -1:0.01:1;
+
+lj = lagrange(nodes);
+outvals = zeros(nnodes,length(testvals));
+
+for ii = 1:nnodes
+    outvals(ii,:) = lj{ii}(testvals);
+end
+
+figure; 
+plot(testvals,outvals)
+
+
+% Function which generates a cell list of Lagrange polynomials given an input list of points.
+function [polys] = lagrange (xs)
+    
+    polys = cell(1, length(xs)); % creates an empty cell, whose entries will be function handles 
+    
+    for i = 1:length(xs)
+        polys{i} = @(x) 1;
+        for j = 1:length(xs)
+            if i ~= j
+                polys{i} = @(x)polys{i}(x).* (x - xs(j))/(xs(i) - xs(j));
+            end
+        end
+    end
+end
