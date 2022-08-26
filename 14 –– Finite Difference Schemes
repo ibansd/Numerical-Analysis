@@ -1,0 +1,41 @@
+function fp = myDiff(f,n,type)
+
+h = 2/n;
+fp = zeros(1,n+1);
+j = 1;
+switch type
+    case 1
+        for j = 1:n + 1
+            if j == n + 1
+                fp(j) = (f(j) - f(j - 1))/h;
+
+            else
+                fp(j) = (f(j + 1) - f(j))/h;
+            end
+        end
+    case 2 
+        for j = 1:n + 1
+            if j == 1
+                fp(j) = (1/(2*h))*(-3*f(j) + 4*f(j + 1) - f(j + 2));
+            elseif j == n + 1
+                fp(j) = (1/(2*h))*(f(j - 2) - 4*f(j - 1) + 3*f(j));
+            else
+                fp(j) = (f(j + 1) - f(j - 1))/(2*h);
+            end
+        end
+    case 3
+        for j = 1:n + 1
+            if j == 1
+                fp(j) = (f(j + 1) - f(j))/h;
+            elseif j == n + 1
+                fp(j) = (f(j) - f(j - 1))/h;
+            else
+                fp(j) = (f(j + 1) - f(j - 1))/(2*h);
+            end
+        end
+    otherwise
+        error('Wrong value for type')
+end
+
+
+end
