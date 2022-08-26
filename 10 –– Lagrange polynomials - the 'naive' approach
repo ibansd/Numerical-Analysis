@@ -1,6 +1,5 @@
 % IBAN SADOWSKI
 
-
 % test 2 
 nnodes = 15; 
 nodes = linspace(-1,1,nnodes)
