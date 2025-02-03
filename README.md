@@ -1,0 +1,2 @@
+MATLAB solutions to MATH 148 assignments. 
+Updating to python solutions starting with [Chebyshev Differentiation](https://github.com/ibansadowski/Numerical-Analysis/tree/main/Chebyshev%20Differentiation)
