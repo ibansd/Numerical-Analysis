@@ -9,3 +9,4 @@ With [uv](https://docs.astral.sh/uv/#getting-started) installed:
 uv venv
 source .venv/bin/activate  # or `.venv\Scripts\activate` on Windows
 uv pip install .
+uv run python cheb_diff.py
